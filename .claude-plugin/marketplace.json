@@ -1,0 +1,16 @@
+{
+  "name": "case-sprint",
+  "owner": {
+    "name": "Rajdeep Nag"
+  },
+  "plugins": [
+    {
+      "name": "case-sprint",
+      "source": "./",
+      "description": "Human-in-the-loop PM case-submission workflow (deck + prototype)."
+    }
+  ],
+  "metadata": {
+    "description": "Human-in-the-loop PM case-submission workflow (deck + prototype) for ISB placements."
+  }
+}
