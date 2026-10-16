@@ -65,8 +65,16 @@ Skill changes come only from case-retro's eval review (see case-retro "Simulatio
 
 ## 0. Set up the case workspace
 1. Ask once (or reuse from the conversation): case ID (e.g. DS01), time window (48 h / 24 h / 6 h /
-   other) and deadline, and where cases live. Default: a `Cases/` folder inside the user's
-   connected PM Prep folder; otherwise the working directory.
+   other) and deadline.
+   **Locate the cases root before saying it is missing**, in this order:
+   a. A full path the user gives (Windows paths like `C:\Users\…\PM Prep\Cases\SIM-MMT-01` are on
+      their computer: reach them through the linked-computer tools, not the local shell).
+   b. Folders connected to this chat: list them (e.g. `ls $HOME/mnt/` in the computer's shell or the
+      folder-listing tool) and look for `*/Cases/` (default: `PM Prep/Cases/`).
+   c. The working directory.
+   d. Only then ask. If no computer/folder is connected at all, say so in one line and offer two
+      fixes: link this chat to the computer with the PM Prep folder, or attach the brief file.
+   Never conclude a case folder is missing without checking a–c.
 2. Create `<cases-root>/<ID>-<short-slug>/` with `case.md` from `references/case-template.md`.
    Save the brief verbatim to `00-brief-source.md` (or keep the attached file in `sources/`).
 3. Fill the **time plan** in `case.md` using `references/time-budgets.md` for the window.
