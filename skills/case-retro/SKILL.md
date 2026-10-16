@@ -30,5 +30,18 @@ Add a dated entry to `<cases-root>/LEARNINGS.md` (create if missing): case ID, t
 score/feedback if any, top lesson, skill changes proposed. Read the last 3 entries at the start of
 each new sprint (case-sprint step 0) and surface relevant lessons on the Gate 1 card.
 
+## Simulation runs (anti-overfitting rules)
+For `mode: simulation` cases, do NOT run the normal retro or append to `LEARNINGS.md`. Instead,
+only when the user asks for an **eval review** across runs:
+1. Read `_evals/EVALS.md`. A change is eligible only if the same *general* miss appears in
+   **≥ 2 runs with different briefs** (ideally different case types).
+2. Write each change as a general rule. It must not mention any company, product, persona or
+   number from a test brief; reject any change that would only have helped one specific brief.
+3. Keep a **holdout**: at least one brief the system has never been tuned on. Re-run it after
+   applying changes and compare its ratings; revert if they fall.
+4. Never add a test brief or its answer to `btc-playbook/references/real-briefs.md`; that file is
+   calibration material, not a test set.
+5. Commit as `eval: <rule summary>` and bump the patch version.
+
 Offer to apply the skill changes to the case-sprint repo (commit with message
 "retro <ID>: <summary>") once the user approves.

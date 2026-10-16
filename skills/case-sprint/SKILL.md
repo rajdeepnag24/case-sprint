@@ -44,6 +44,25 @@ decisions; all reading, research, analysis and building happens in subagents and
 8. If no subagent tool exists at all, run steps inline but still write to files and show only the
    gate card.
 
+## Simulation mode (evaluating the workflow without training it on the test)
+Trigger: case ID starts with `SIM-`, or the user says "simulation", "test run", "eval run",
+"replay". Write `mode: simulation` at the top of `case.md`.
+
+**Isolation (no carry-in):** do not read `LEARNINGS.md`, `_evals/`, other case folders, memory, or
+any file outside this case folder except the plugin's own skill files. Tell every subagent the same.
+Do not use the user's known solution for this case (e.g. a past team submission) until Gate 5.
+
+**No carry-out:** do not write to `LEARNINGS.md` or memory; do not propose or apply skill edits
+during or right after the run. Gates run normally, the user still decides.
+
+**Scoring:** at each gate, ask the user for a 1–5 quality rating and one line on what was missing;
+log time per step. After Gate 5 (or when the user stops), write `09-eval.md`: ratings, time vs plan,
+misses, and, only now, a comparison with any reference solution the user provides.
+
+**Aggregation:** append one row to `<cases-root>/_evals/EVALS.md` (case ID, type, window, gate
+ratings, total time, top 3 misses as *general* patterns: no company names or case specifics).
+Skill changes come only from case-retro's eval review (see case-retro "Simulation runs").
+
 ## 0. Set up the case workspace
 1. Ask once (or reuse from the conversation): case ID (e.g. DS01), time window (48 h / 24 h / 6 h /
    other) and deadline, and where cases live. Default: a `Cases/` folder inside the user's

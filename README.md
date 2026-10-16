@@ -31,6 +31,13 @@ The workflow is built to stay out of your chat's context window:
   say "resume <ID>".
 - Direct use of a hidden step: type `/case-sprint:<skill>` (e.g. `/case-sprint:deck-qa`).
 
+## Simulation mode (testing the workflow)
+Start a case with an ID beginning `SIM-` (or say "simulation"). The run is isolated: it reads no
+past learnings, other cases or memory, writes nothing back, and proposes no skill edits. You rate each
+gate 1–5; results go to `09-eval.md` and one anonymised row in `Cases/_evals/EVALS.md`. Skill changes
+only come from an **eval review** across runs: a miss must recur in ≥ 2 different briefs, the fix
+must be a general rule (no case specifics), and a holdout brief is re-run to catch regressions.
+
 ## Skills
 
 | Skill | Role |
