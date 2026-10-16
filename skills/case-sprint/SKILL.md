@@ -15,6 +15,35 @@ Run the pipeline below. Do the work between gates; **stop at every gate** and wa
 decision. The user decides direction and judges quality; never decide the angle or the storyline
 for them (see btc-playbook `references/ai-rules.md`).
 
+## Execution model: keep the user's chat context-light (mandatory)
+The main conversation is a **control room**, not a workspace. It holds only gate cards and
+decisions; all reading, research, analysis and building happens in subagents and on disk.
+
+1. **Paths.** Note this skill's base directory when it loads. Step skills are siblings:
+   `<skills-root>/<step>/SKILL.md`; playbook files are `<skills-root>/btc-playbook/references/…`.
+   Step skills are hidden from auto-loading on purpose; never load them into the main thread.
+2. **Dispatch every step to a fresh subagent** (general-purpose) with a self-contained prompt:
+   - "Read `<skills-root>/<step>/SKILL.md` and follow it. Resolve 'btc-playbook `references/x`' as
+     `<skills-root>/btc-playbook/references/x`."
+   - Case folder path, the input files to read, the output file(s) to write.
+   - "Write all output to files. Reply with ONLY the gate card (≤ 15 lines), nothing else."
+3. **Research and QA agents run from the main thread** (subagents cannot start subagents):
+   - Step 2: dispatch `precedent-scout`, `voc-miner` and (if needed) `market-sizer` **in parallel**,
+     each with an output path (`02a-precedents.md`, `02b-voc.md`, `02c-sizing.md`); then dispatch the
+     research-pack synthesis subagent to read those files and write `02-research.md`.
+   - Step 7: dispatch `fresh-eyes-reviewer` with only headlines + exhibit lines and output path
+     `05a-skim.md`; then dispatch the deck-qa subagent.
+4. **Never paste file contents into the main chat.** If the user wants detail, give the file path
+   or summarise in ≤ 5 lines via a subagent.
+5. **Main-thread replies ≤ 15 lines**, gate cards included. Decisions are written to `case.md`
+   immediately, so nothing needs to stay in conversation memory.
+6. **Fresh chat is always safe.** Everything needed to continue is in the case folder. Suggest a new
+   chat after Gate 2 and after Gate 3b on long cases ("resume <ID>" picks up from `case.md`).
+7. **Exception:** if a subagent reports it cannot create the deck (no Slides/Artifact tool), run
+   deck-builder in the main thread, then return to the rules above.
+8. If no subagent tool exists at all, run steps inline but still write to files and show only the
+   gate card.
+
 ## 0. Set up the case workspace
 1. Ask once (or reuse from the conversation): case ID (e.g. DS01), time window (48 h / 24 h / 6 h /
    other) and deadline, and where cases live. Default: a `Cases/` folder inside the user's

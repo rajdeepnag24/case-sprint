@@ -21,6 +21,16 @@ Brief → [brief-reader] → ◆ Gate 1: case type + scope
 ```
 \* only when the brief requires a prototype or time allows.
 
+## Context use
+The workflow is built to stay out of your chat's context window:
+- Only **2 skill descriptions** sit in context (`case-sprint`, `pattern-library`). The other 11 skills
+  are hidden from auto-loading and run only when the orchestrator dispatches them.
+- **Every step runs in a separate subagent** that reads its skill file, writes to the case folder,
+  and returns a ≤ 15-line gate card. Research and QA agents run in parallel, in their own contexts.
+- **State lives in files** (`case.md` + step files), so you can start a fresh chat at any point and
+  say "resume <ID>".
+- Direct use of a hidden step: type `/case-sprint:<skill>` (e.g. `/case-sprint:deck-qa`).
+
 ## Skills
 
 | Skill | Role |

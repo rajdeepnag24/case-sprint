@@ -5,6 +5,7 @@ description: >
   carries one claim and one exhibit. This skill should be used when the user says "build the
   deck", "make the slides from my storyline", "turn this into a deck", or when case-sprint reaches
   step 5.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

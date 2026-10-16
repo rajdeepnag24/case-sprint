@@ -5,6 +5,7 @@ description: >
   consistent altitude, number provenance and consistency, building-block acceptance criteria,
   slide limits and submission mechanics. This skill should be used when the user says "QA my
   deck", "check the deck", "skim test", "is this ready to submit", or when case-sprint reaches step 7.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---
@@ -14,7 +15,7 @@ metadata:
 Report findings; do not edit unless the user picks fixes at Gate 4b.
 
 ## Checks (in order)
-1. **Two-minute skim.** Dispatch the `fresh-eyes-reviewer` agent with ONLY the slide headlines and
+1. **Two-minute skim.** If `05a-skim.md` exists, read it. Otherwise dispatch the `fresh-eyes-reviewer` agent with ONLY the slide headlines and
    one-line exhibit descriptions (no case context). It returns what it thinks the answer is. If its
    answer differs from the user's angle in `case.md`, that is finding #1.
 2. **Headlines are claims.** Flag each topic headline (btc-playbook `references/slide-craft.md`).

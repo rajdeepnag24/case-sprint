@@ -5,6 +5,7 @@ description: >
   critiques headlines the user writes. This skill should be used when the user says "build the
   storyline", "check my headlines", "ghost deck", "is this a claim or a topic", "does my deck
   argue something", or when case-sprint reaches step 4.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

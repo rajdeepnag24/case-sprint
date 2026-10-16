@@ -6,6 +6,7 @@ description: >
   This skill should be used when building or styling a case deck or prototype, when the user says
   "apply my design system", "use the case theme", "match Swiggy's colours", "update my design
   system", or shares reference images to evolve the look.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
   status: "placeholder defaults: refine with the user's references"

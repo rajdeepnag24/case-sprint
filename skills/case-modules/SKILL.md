@@ -7,6 +7,7 @@ description: >
   This skill should be used when the user says "run the modules", "build personas for the case",
   "do the metrics for this case", "work out the economics", "right to win", or when case-sprint
   reaches step 3.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

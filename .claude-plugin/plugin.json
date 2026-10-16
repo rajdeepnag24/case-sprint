@@ -1,6 +1,6 @@
 {
   "name": "case-sprint",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Human-in-the-loop workflow for PM case submissions (deck + prototype): reads the brief, classifies it into one of six case types, runs the matching toolkit, and stops for your decisions at five gates. Built on the ISB BTC Handbook 2026 method.",
   "author": { "name": "Rajdeep Nag" },
   "repository": "https://github.com/rajdeepnag24/case-sprint",

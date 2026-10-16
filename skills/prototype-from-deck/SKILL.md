@@ -5,6 +5,7 @@ description: >
   golden journey, a persona and visual references. This skill should be used when the user says
   "build the prototype", "prototype from my deck", "make the MVP clickable", "write the Lovable/v0
   prompt", or when case-sprint reaches step 6.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

@@ -7,6 +7,7 @@ description: >
   This skill should be used when another case-sprint skill says "consult btc-playbook", or when
   the user asks "what does BTC say about…", "which case type is this", "what should this slide
   contain", or "is this framework worth using here".
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

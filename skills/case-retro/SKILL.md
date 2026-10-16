@@ -4,6 +4,7 @@ description: >
   Runs a short retrospective after a case sprint and turns it into concrete improvements to the
   case-sprint skills. This skill should be used when the user says "case retro", "what went
   wrong in this sprint", "improve the system", "log learnings", or when case-sprint reaches step 10.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

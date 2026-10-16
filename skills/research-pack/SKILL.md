@@ -5,6 +5,7 @@ description: >
   contrasts, what the company already runs, public user voice (app reviews, Reddit, YouTube),
   and a first market-size estimate. This skill should be used when the user says "research this
   case", "build the research pack", "what's already out there", or when case-sprint reaches step 2.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---
@@ -13,7 +14,10 @@ metadata:
 
 Input: `01-brief.md` and the Gate 1 decisions in `case.md`.
 
-## Dispatch (parallel when an agent/subagent tool exists; otherwise run in sequence)
+## Dispatch
+If `02a-precedents.md`, `02b-voc.md` (and `02c-sizing.md` when sizing applies) already exist in the
+case folder, the orchestrator has run the agents: skip to Synthesis and read those files.
+Otherwise run the agents in parallel when an agent tool exists, or do their work in sequence:
 | Agent | Brief it with | Returns |
 |---|---|---|
 | `precedent-scout` | company, problem, case type, scope | precedents, parallels, contrasts, what the company already runs, competitor moves |

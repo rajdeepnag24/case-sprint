@@ -5,6 +5,7 @@ description: >
   explicitly asked, implied and deliberately left open, plus hard limits and evaluation criteria.
   This skill should be used when the user says "read this brief", "what type of case is this",
   "break down this case", "what are they really asking", or when case-sprint reaches step 1.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---

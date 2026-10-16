@@ -6,6 +6,7 @@ description: >
   answers in the user's own reasoning. This skill should be used when the user says "red team my
   deck", "what will the panel ask", "prep me for the case interview", "stress test this", or when
   case-sprint reaches step 9.
+disable-model-invocation: true
 metadata:
   version: "0.1.0"
 ---
